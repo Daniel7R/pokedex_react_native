@@ -8,7 +8,8 @@ const FavoritesNavigation = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="FavoritesS" component={Favorites} options={{
-                title: "Favorites"
+                title: "Favorites",
+                headerTitleAlign: "center"
             }} />
         </Stack.Navigator>
     )

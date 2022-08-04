@@ -8,7 +8,8 @@ const AccountNavigation = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Accounts" component={Account} options={{
-                title: "Account"
+                title: "Account",
+                headerTitleAlign: "center"
             }} />
         </Stack.Navigator>
     )
