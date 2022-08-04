@@ -9,7 +9,7 @@ interface PokemonDetails {
     id: number,
     type?: string,
     order: number,
-    imagen: string
+    image: string
 }
 
 export function Pokedex() {
@@ -28,7 +28,7 @@ export function Pokedex() {
                     name: pokemonDetails?.name,
                     type: pokemonDetails?.types[0].type.name,
                     order: pokemonDetails?.order,
-                    imagen: pokemonDetails?.sprites.other['official-artwork'].front_default
+                    image: pokemonDetails?.sprites.other['official-artwork'].front_default
                 })
                 setPokemons([...pokemons, ...pokemonsArray]);
             }
