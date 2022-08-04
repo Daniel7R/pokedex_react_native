@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, StyleSheet, ActivityIndicator } from "react-native"
+import { FlatList, StyleSheet, ActivityIndicator, Platform } from "react-native"
 
 import { PokemonCard } from "./PokemonCard"
 interface Pokemon {
@@ -45,10 +45,11 @@ const PokemonList = (props: Props) => {
 const styles = StyleSheet.create({
     flatListContentContainer: {
         paddingHorizontal: 5,
+        marginTop: Platform.OS === "android" ? 20 : 0
     },
     spinner: {
         marginTop: 20,
-        marginBottom: 60
+        marginBottom: Platform.OS === "android" ? 80 : 60
     }
 })
 
