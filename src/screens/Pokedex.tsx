@@ -15,10 +15,11 @@ interface PokemonDetails {
 export function Pokedex() {
 
     const [pokemons, setPokemons] = React.useState<PokemonDetails[]>([]);
-
+    const [nextUrl, setNextUrl] = React.useState(null);
     const loadPokemons = async () => {
         try {
-            const response = await getPokemonsApi();
+            const response = await getPokemonsApi(nextUrl);
+            setNextUrl(response?.next);
             const pokemonsArray: PokemonDetails[] = [];
 
             for await (let pokemon of response.results) {
@@ -30,8 +31,8 @@ export function Pokedex() {
                     order: pokemonDetails?.order,
                     image: pokemonDetails?.sprites.other['official-artwork'].front_default
                 })
-                setPokemons([...pokemons, ...pokemonsArray]);
             }
+            setPokemons([...pokemons, ...pokemonsArray]);
 
         } catch (err) {
             console.error(err);
@@ -46,7 +47,7 @@ export function Pokedex() {
 
     return (
         <SafeAreaView>
-            <PokemonList pokemons={pokemons} />
+            <PokemonList isNext={nextUrl} pokemons={pokemons} loadPokemons={loadPokemons} />
         </SafeAreaView>
     )
 }

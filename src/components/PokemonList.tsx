@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, StyleSheet } from "react-native"
+import { FlatList, StyleSheet, ActivityIndicator } from "react-native"
 
 import { PokemonCard } from "./PokemonCard"
 interface Pokemon {
@@ -7,15 +7,21 @@ interface Pokemon {
     id: number,
     type?: string,
     order: number,
-    imagen: string
+    image: string
 }
 
 interface Props {
-    pokemons: Pokemon[]
+    pokemons: Pokemon[],
+    loadPokemons,
+    isNext: string | null
 }
 
 const PokemonList = (props: Props) => {
-    const { pokemons } = props;
+    const { pokemons, loadPokemons, isNext } = props;
+
+    const loadMore = () => {
+        loadPokemons();
+    };
     return (
         <FlatList
             data={pokemons}
@@ -24,6 +30,12 @@ const PokemonList = (props: Props) => {
             keyExtractor={pokemon => pokemon + String(pokemon.id)}
             renderItem={({ item }) => <PokemonCard pokemon={item} />}
             contentContainerStyle={styles.flatListContentContainer}
+            onEndReached={isNext && loadMore}
+            onEndReachedThreshold={0.1}
+            ListFooterComponent={isNext && (
+                <ActivityIndicator size={"large"} style={styles.spinner} color="#ff1c2f" />
+            )
+            }
         />
     )
 }
@@ -33,6 +45,10 @@ const PokemonList = (props: Props) => {
 const styles = StyleSheet.create({
     flatListContentContainer: {
         paddingHorizontal: 5,
+    },
+    spinner: {
+        marginTop: 20,
+        marginBottom: 60
     }
 })
 
