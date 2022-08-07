@@ -5,7 +5,8 @@ import { Image } from 'react-native';
 
 import FavoritesNavigation from './FavoritesNavigation';
 import PokedexNavigation from './PokedexNavigation';
-import AccountNavigation from './AccountNavigation';
+// import AccountNavigation from './AccountNavigation';
+import { AccountAuthNavigation } from './AccountAuthNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,8 +25,8 @@ const Navigation = () => {
                 tabBarIcon: () => renderPokeball(),
                 headerShown: false
             }} />
-            <Tab.Screen name="Account" component={AccountNavigation} options={{
-                tabBarLabel: "Account",
+            <Tab.Screen name="Log In" component={AccountAuthNavigation} options={{
+                tabBarLabel: "Log In",
                 tabBarIcon: ({ color, size }) => (
                     <Icon name="user" color={color} size={size} />
                 ),

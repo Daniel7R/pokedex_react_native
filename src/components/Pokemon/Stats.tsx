@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { map, capitalize } from "lodash";
 
+import Constants from "expo-constants";
+
 const Stats = (props) => {
     const { stats } = props;
 
@@ -12,7 +14,7 @@ const Stats = (props) => {
             width: `${num}%`,
         }
     }
-
+    console.log(Constants.manifest?.extra?.firebaseAppId, "Holi")
     return (
         <View style={styles.content}>
             <Text style={styles.title}>Base Stats</Text>
@@ -40,7 +42,8 @@ const styles = StyleSheet.create({
     content: {
         paddingHorizontal: 20,
         marginTop: 30,
-        justifyContent: "center"
+        justifyContent: "center",
+        marginBottom: 30
     },
     title: {
         fontWeight: "bold",
