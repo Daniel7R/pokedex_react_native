@@ -42,7 +42,7 @@ const SignIn = () => {
             <View style={styles.controls}>
                 <Input
                     placeholder='Email'
-                    containerStyle={styles.control}
+                    containerStyle={styles.input}
                     value={value.email}
                     onChangeText={(text) => setValue({ ...value, email: text })}
                     leftIcon={<Icon
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
 
     control: {
         marginTop: 10,
+        backgroundColor: '#ff3838'
     },
     input: {
         width: "100%"

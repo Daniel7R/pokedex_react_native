@@ -45,7 +45,7 @@ const SignUp: React.FC<StackScreenProps<any>> = ({ navigation }) => {
             <View style={styles.controls}>
                 <Input
                     placeholder='Email'
-                    containerStyle={styles.control}
+                    containerStyle={styles.input}
                     value={value.email}
                     onChangeText={(text) => setValue({ ...value, email: text })}
                     leftIcon={<Icon
@@ -56,7 +56,7 @@ const SignUp: React.FC<StackScreenProps<any>> = ({ navigation }) => {
 
                 <Input
                     placeholder='Password'
-                    containerStyle={styles.control}
+                    containerStyle={styles.input}
                     value={value.password}
                     onChangeText={(text) => setValue({ ...value, password: text })}
                     secureTextEntry={true}
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
 
     control: {
         marginTop: 10,
+        backgroundColor: '#ff3838'
     },
     input: {
         width: "100%"

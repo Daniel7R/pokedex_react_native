@@ -14,7 +14,6 @@ const Stats = (props) => {
             width: `${num}%`,
         }
     }
-    console.log(Constants.manifest?.extra?.firebaseAppId, "Holi")
     return (
         <View style={styles.content}>
             <Text style={styles.title}>Base Stats</Text>

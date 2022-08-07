@@ -5,7 +5,9 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { Header } from '../components/Pokemon/Header';
 import { Type } from '../components/Pokemon/Type';
 import { Stats } from "../components/Pokemon/Stats";
+import { Favorite } from '../components/Favorite';
 import { getPokemonDetailApi } from "../api/pokemon";
+import { useAuthentication } from '../utils/hooks/useAuthentication';
 
 interface Props {
     route
@@ -15,22 +17,22 @@ interface Props {
 const Pokemon = (props: Props) => {
     const [pokemon, setPokemon] = React.useState(null);
     const { route: { params }, navigation } = props;
-
+    const { user } = useAuthentication();
 
     React.useEffect(() => {
         navigation.setOptions({
-            headerRight: () => null,
+            headerRight: () => user !== undefined && <Favorite id={pokemon?.id} />,
             headerLeft: () => (
                 <Icon
                     name="arrow-left"
                     color="#fff"
                     size={20}
                     style={{ marginLeft: 20 }}
-                    onPress={() => navigation.goBack}
+                    onPress={() => navigation.goBack()}
                 />
             )
         })
-    }, [navigation, params])
+    }, [navigation, params, user, pokemon])
 
     React.useEffect(() => {
         (async () => {

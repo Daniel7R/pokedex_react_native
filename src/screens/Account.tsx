@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 10,
-        backgroundColor: "#ff3838"
+        backgroundColor: "#ff3838",
+        paddingHorizontal: 30
     }
 });

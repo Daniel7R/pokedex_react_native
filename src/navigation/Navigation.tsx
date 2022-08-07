@@ -26,7 +26,7 @@ const Navigation = () => {
                 headerShown: false
             }} />
             <Tab.Screen name="Log In" component={AccountAuthNavigation} options={{
-                tabBarLabel: "Log In",
+                tabBarLabel: "Account",
                 tabBarIcon: ({ color, size }) => (
                     <Icon name="user" color={color} size={size} />
                 ),
