@@ -6,6 +6,7 @@ const Welcome: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>Welcome to Pokedex</Text>
+            <Text style={{ fontSize: 17, marginTop: 30, marginHorizontal: 10 }}>If you want to see your favorites or account info, you must register first!</Text>
 
             <View style={styles.buttons}>
                 <Pressable style={styles.buttonSI} onPress={() => navigation.navigate('Sign In')}>
@@ -25,13 +26,13 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start"
     },
     buttons: {
-        flex: 1,
         justifyContent: "center",
         width: "100%",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: 80
     },
     buttonSU: {
         backgroundColor: "#ff3838",

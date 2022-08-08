@@ -15,4 +15,4 @@ const FavoritesNavigation = () => {
     )
 }
 
-export default FavoritesNavigation
+export { FavoritesNavigation }

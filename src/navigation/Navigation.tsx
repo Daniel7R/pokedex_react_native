@@ -3,17 +3,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from "react-native-vector-icons/FontAwesome5"
 import { Image } from 'react-native';
 
-import FavoritesNavigation from './FavoritesNavigation';
+// import {FavoritesNavigation} from './FavoritesNavigation';
 import PokedexNavigation from './PokedexNavigation';
-// import AccountNavigation from './AccountNavigation';
 import { AccountAuthNavigation } from './AccountAuthNavigation';
+import { FavoritesAuthNavigation } from './FavoritesAuthNavigation';
 
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Favorites" component={FavoritesNavigation} options={{
+        <Tab.Navigator initialRouteName="Pokedex">
+            <Tab.Screen name="FavoritesAuth" component={FavoritesAuthNavigation} options={{
                 tabBarLabel: "Favorites",
                 tabBarIcon: ({ color, size }) => (
                     <Icon name="star" color={color} size={size} />
