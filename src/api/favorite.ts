@@ -1,23 +1,46 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { includes, pull } from "lodash";
 import { FAVORITE_STORAGE } from "../utils/constants";
 
-export const addPokemonToFavoriteApi = async (id) => {
+export async function getPokemonsFavoriteApi() {
   try {
-    const favorites: number[] = await getPokemonsFavoriteApi();
+    const response: any = await AsyncStorage.getItem(FAVORITE_STORAGE);
+
+    return JSON.parse(response || "[]");
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addPokemonFavoriteApi(id) {
+  try {
+    const favorites = await getPokemonsFavoriteApi();
     favorites.push(id);
-    await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(favorites));
-  } catch (err) {
-    throw err;
+    const jsonFavorites = JSON.stringify(favorites);
+    await AsyncStorage.setItem(FAVORITE_STORAGE, jsonFavorites);
+  } catch (error) {
+    throw error;
   }
-};
+}
 
-export const getPokemonsFavoriteApi = async () => {
+export async function removePokemonFavoriteApi(id) {
   try {
-    const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
+    const favorites = await getPokemonsFavoriteApi();
+    const newFavorites = pull(favorites, id);
 
-    return JSON.parse(response || []);
+    await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(newFavorites));
   } catch (err) {
     throw err;
   }
-};
+}
+
+export async function isPokemonFavoriteApi(id) {
+  try {
+    const response = await getPokemonsFavoriteApi();
+
+    return includes(response, id);
+  } catch (Err) {
+    throw Err;
+  }
+}
