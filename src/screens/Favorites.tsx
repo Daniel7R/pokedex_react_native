@@ -20,8 +20,6 @@ const Favorites = () => {
         React.useCallback(() => {
             (async () => {
                 const response = await getPokemonsFavoriteApi();
-                console.log("response", response);
-
                 const pokemonsArray: Pokemon[] = [];
 
                 for await (const id of response) {
@@ -38,8 +36,6 @@ const Favorites = () => {
             })();
         }, [])
     )
-
-
 
     return (
         <PokemonList pokemons={pokemons} />
