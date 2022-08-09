@@ -11,7 +11,7 @@ export default {
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#ffffff",
+      backgroundColor: "#ff3838",
     },
     updates: {
       fallbackToCacheTimeout: 0,
@@ -25,6 +25,7 @@ export default {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF",
       },
+      package: "daniel.rivera.pokedex",
     },
     web: {
       favicon: "./assets/favicon.png",
